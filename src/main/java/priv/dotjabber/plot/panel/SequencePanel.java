@@ -15,17 +15,15 @@ import priv.dotjabber.plot.function.PlotFunction;
 import priv.dotjabber.plot.point.IPoint;
 
 public class SequencePanel extends JPanel {
-	private static final long serialVersionUID = -4845236115290637699L;
-
 	private static final double SCALE_FACTOR_DEFAULT = 0.0027968216246636525;
-	private double scale = SCALE_FACTOR_DEFAULT;
+	private static final double scale = SCALE_FACTOR_DEFAULT;
 	
 	private BufferedImage bufferedPlot;
 	private PlotFunction plotFunction;
 	
 	private double currentParam;
 
-	private IPoint zeroPoint;
+	private final IPoint zeroPoint;
 	private int height;
 	private int width;
 	
@@ -38,24 +36,14 @@ public class SequencePanel extends JPanel {
 			plotFunction = plotClass.newInstance();
 			plotFunction.setParameters(start);
 			
-		} catch (SecurityException e) {
-			e.printStackTrace();
-			
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-			
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-			
-		} catch (IllegalArgumentException e) {
+		} catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException e) {
 			e.printStackTrace();
 		}
-		
+
 		getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "UP");
 		getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), "DOWN");
 		
 		getActionMap().put("UP", new AbstractAction("UP") {
-			private static final long serialVersionUID = 8365708838544624242L;
 
 			@Override
 			public void actionPerformed(ActionEvent evt) {
@@ -65,7 +53,6 @@ public class SequencePanel extends JPanel {
 		});
 		
 		getActionMap().put("DOWN", new AbstractAction("DOWN") {
-			private static final long serialVersionUID = 8365708838544624242L;
 
 			@Override
 			public void actionPerformed(ActionEvent evt) {

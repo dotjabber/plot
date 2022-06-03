@@ -21,21 +21,19 @@ import priv.dotjabber.plot.point.DPoint;
 import priv.dotjabber.plot.point.IPoint;
 
 public class PlotPanel extends JPanel implements ComponentListener, MouseListener, MouseMotionListener, KeyListener, MouseWheelListener {
-	private static final long serialVersionUID = -4845236115290637699L;
-
 	private static final int PLOT_STRING_MARGIN = 15;
 	
 	private static final double SCALE_FACTOR_STEP = 0.2;
 	private static final double SCALE_FACTOR_DEFAULT = 0.0027968216246636525;
 	
 	private BufferedImage bufferedPlot;
-	private PlotFunction[] plotFunctions;
+	private final PlotFunction[] plotFunctions;
 	
-	private DPoint centerPoint;
-	private IPoint zeroPoint;
+	private final DPoint centerPoint;
+	private final IPoint zeroPoint;
 	
-	private DPoint mousePoint;
-	private IPoint mousePressPoint;
+	private final DPoint mousePoint;
+	private final IPoint mousePressPoint;
 	
 	private int height;
 	private int width;

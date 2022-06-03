@@ -5,19 +5,18 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import priv.dotjabber.plot.function.complex.JuliaSet;
-import priv.dotjabber.plot.panel.SequencePanel;
+import priv.dotjabber.plot.function.fractal.PentagramFunction;
+import priv.dotjabber.plot.panel.PlotPanel;
 
-public class Sequence extends JFrame {
-	private static final long serialVersionUID = -7625351392602881943L;
+public class Plot extends JFrame {
 	private static final int WIDTH = 800;
 	private static final int HEIGHT = 600;
 
 	public static void main(String[] args) {
-		JFrame main = new Sequence();
+		JFrame main = new Plot();
 
 		main.getContentPane().add(
-				new SequencePanel(JuliaSet.class, -1.0, 0.01)
+				new PlotPanel(new PentagramFunction())
 		);
 		
 		main.setVisible(true);

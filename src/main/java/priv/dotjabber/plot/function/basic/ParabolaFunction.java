@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import priv.dotjabber.plot.function.PlotBasicFunction;
 
-public class ParaboleFunction extends PlotBasicFunction {
+public class ParabolaFunction extends PlotBasicFunction {
 
 	@Override
 	public double getValue(double x) {
