@@ -170,7 +170,7 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		}
 		
 		// debug mode
-		else if(evt.getKeyCode() == KeyEvent.VK_D && evt.getModifiers() == KeyEvent.CTRL_MASK) {
+		else if(evt.getKeyCode() == KeyEvent.VK_D && evt.getModifiersEx() == KeyEvent.CTRL_DOWN_MASK) {
 			infoPresent = !infoPresent;
 		}
 		
@@ -194,20 +194,30 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		
 		if(infoPresent) {
 			g.setColor(Color.WHITE);
-			
-			// TODO: axis
-			
+
 			// mouse point
-			String mousePointLabel = MessageFormat.format("mouse: ({0}; {1})", mousePoint.x, mousePoint.y);
-			g.drawString(mousePointLabel, PLOT_STRING_MARGIN, height - 2 * PLOT_STRING_MARGIN);
+			g.drawString(
+					MessageFormat.format("mouse: ({0}; {1})", mousePoint.x, mousePoint.y),
+					PLOT_STRING_MARGIN, height - 3 * PLOT_STRING_MARGIN
+			);
 			
 			// scale factors
-			String scaleXLabel = MessageFormat.format("scale: {0}", scale);
-			g.drawString(scaleXLabel, PLOT_STRING_MARGIN, height - 1 * PLOT_STRING_MARGIN);
+			g.drawString(
+					MessageFormat.format("scale: {0}", scale),
+					PLOT_STRING_MARGIN, height - 2 * PLOT_STRING_MARGIN
+			);
+
+			// zero point
+			g.drawString(
+					MessageFormat.format("({0}; {1})", zeroPoint.x, zeroPoint.y),
+					PLOT_STRING_MARGIN, height - PLOT_STRING_MARGIN
+			);
 			
 			// center point
-			String point = MessageFormat.format("({0}; {1})", centerPoint.x, centerPoint.y);
-			g.drawString(point, width / 2 + PLOT_STRING_MARGIN , height / 2 - PLOT_STRING_MARGIN);
+			g.drawString(
+					MessageFormat.format("({0}; {1})", centerPoint.x, centerPoint.y),
+					width / 2 + PLOT_STRING_MARGIN , height / 2 - PLOT_STRING_MARGIN
+			);
 		}
 	}
 }

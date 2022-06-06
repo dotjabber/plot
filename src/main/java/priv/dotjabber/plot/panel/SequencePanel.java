@@ -6,6 +6,7 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.AbstractAction;
 import javax.swing.JPanel;
@@ -33,10 +34,10 @@ public class SequencePanel extends JPanel {
 		zeroPoint = new IPoint();
 		currentParam = start;
 		try {
-			plotFunction = plotClass.newInstance();
+			plotFunction = plotClass.getDeclaredConstructor().newInstance();
 			plotFunction.setParameters(start);
 			
-		} catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException e) {
+		} catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException e) {
 			e.printStackTrace();
 		}
 

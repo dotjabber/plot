@@ -26,8 +26,9 @@ public abstract class PlotComplexFunction extends PlotFunction {
 
 	public int getColor(Complex n) {
 		float h = (float) (n.getArgument() / (Math.PI * 2));
-		float s = (float) Math.abs(Math.sin((n.abs() * 10)));
+		float s = (float) Math.abs(Math.cos(n.abs())); //
+		float v = (float) Math.abs(Math.sin(n.abs())); //
 
-		return Color.HSBtoRGB(h, 1, s);
+		return Color.HSBtoRGB(h, s, v);
 	}
 }

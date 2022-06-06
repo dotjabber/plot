@@ -5,6 +5,9 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import priv.dotjabber.plot.function.complex.JuliaSet;
+import priv.dotjabber.plot.function.complex.MandelbrotSet;
+import priv.dotjabber.plot.function.complex.PointFunction;
 import priv.dotjabber.plot.function.fractal.PentagramFunction;
 import priv.dotjabber.plot.panel.PlotPanel;
 
@@ -16,7 +19,7 @@ public class Plot extends JFrame {
 		JFrame main = new Plot();
 
 		main.getContentPane().add(
-				new PlotPanel(new PentagramFunction())
+				new PlotPanel(new PointFunction())
 		);
 		
 		main.setVisible(true);

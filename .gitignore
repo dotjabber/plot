@@ -1,0 +1,10 @@
+*.iml
+*/target/*
+target/
+.idea/
+*.class
+*.jar
+MANIFEST.MF
+*.flattened-pom.xml
+*/sedn-frontend*
+*.zip
