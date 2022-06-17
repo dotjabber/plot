@@ -40,7 +40,7 @@ public class SequencePanel extends JPanel {
 		currentParam = start;
 		try {
 			plotFunction = plotClass.getDeclaredConstructor().newInstance();
-			plotFunction.setParameters(start);
+			//plotFunction.setParam(start);
 			
 		} catch (SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | NoSuchMethodException | InvocationTargetException e) {
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class SequencePanel extends JPanel {
 	}
 	
 	public void update() {
-		plotFunction.setParameters(currentParam);
+		//plotFunction.up(currentParam);
 		plotFunction.doPlot(bufferedPlot, zeroPoint, scale);
 		repaint();
 	}

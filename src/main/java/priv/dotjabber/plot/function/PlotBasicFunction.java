@@ -4,9 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import priv.dotjabber.plot.generator.Generator;
 import priv.dotjabber.plot.point.IPoint;
 
 public abstract class PlotBasicFunction extends PlotFunction {
+
+	public PlotBasicFunction(Generator generator) {
+		super(generator);
+	}
 
 	@Override
 	public void doPlot(BufferedImage image, IPoint zeroPoint, double scale) {

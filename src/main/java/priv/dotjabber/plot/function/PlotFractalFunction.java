@@ -3,12 +3,18 @@ package priv.dotjabber.plot.function;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import priv.dotjabber.plot.generator.Generator;
+import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.DPoint;
 import priv.dotjabber.plot.point.IPoint;
 
 public abstract class PlotFractalFunction extends PlotFunction {
 	private static final int ITERATIONS = 300000;
 	private static final Random RAND = new Random();
+
+	public PlotFractalFunction(Generator generator) {
+		super(generator);
+	}
 
 	@Override
 	public void doPlot(BufferedImage image, IPoint zeroPoint, double scale) {
@@ -27,6 +33,6 @@ public abstract class PlotFractalFunction extends PlotFunction {
 	}
 
 	public abstract DPoint getValue(double rand, DPoint p);
-	
+
 	public abstract int getColor();
 }

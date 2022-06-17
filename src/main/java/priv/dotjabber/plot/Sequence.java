@@ -5,13 +5,11 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import priv.dotjabber.plot.common.Config;
 import priv.dotjabber.plot.function.complex.JuliaSet;
 import priv.dotjabber.plot.panel.SequencePanel;
 
 public class Sequence extends JFrame {
-	private static final int WIDTH = 800;
-	private static final int HEIGHT = 600;
-
 	public static void main(String[] args) {
 		JFrame main = new Sequence();
 
@@ -20,7 +18,7 @@ public class Sequence extends JFrame {
 		);
 		
 		main.setVisible(true);
-		main.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		main.setPreferredSize(new Dimension(Config.WIDTH, Config.HEIGHT));
 		main.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		main.pack();
 	}

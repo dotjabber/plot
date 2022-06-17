@@ -9,6 +9,7 @@ import priv.dotjabber.plot.common.Config;
 import priv.dotjabber.plot.function.basic.*;
 import priv.dotjabber.plot.function.complex.*;
 import priv.dotjabber.plot.function.fractal.*;
+import priv.dotjabber.plot.generator.IntSeqGenerator;
 import priv.dotjabber.plot.panel.PlotPanel;
 
 public class Plot extends JFrame {
@@ -17,7 +18,7 @@ public class Plot extends JFrame {
 		JFrame main = new Plot();
 
 		main.getContentPane().add(
-				new PlotPanel(new FancyTwoFunction())
+				new PlotPanel(new MandelbrotSet(new IntSeqGenerator(0, 1)))
 		);
 		
 		main.setVisible(true);

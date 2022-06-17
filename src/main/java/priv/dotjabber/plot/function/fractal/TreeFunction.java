@@ -3,9 +3,14 @@ package priv.dotjabber.plot.function.fractal;
 import java.awt.Color;
 
 import priv.dotjabber.plot.function.PlotFractalFunction;
+import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.DPoint;
 
 public class TreeFunction extends PlotFractalFunction {
+
+	public TreeFunction() {
+		super(new ConstGenerator(0));
+	}
 
 	@Override
 	public DPoint getValue(double rand, DPoint p) {

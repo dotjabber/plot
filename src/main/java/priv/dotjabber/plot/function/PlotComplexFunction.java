@@ -5,9 +5,15 @@ import java.awt.image.BufferedImage;
 
 import org.apache.commons.math3.complex.Complex;
 
+import priv.dotjabber.plot.generator.Generator;
+import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.IPoint;
 
 public abstract class PlotComplexFunction extends PlotFunction {
+
+	public PlotComplexFunction(Generator generator) {
+		super(generator);
+	}
 
 	@Override
 	public void doPlot(BufferedImage image, IPoint zeroPoint, double scale) {
@@ -25,7 +31,7 @@ public abstract class PlotComplexFunction extends PlotFunction {
 	public abstract Complex getValue(Complex n);
 
 	public int getColor(Complex n) {
-		float h = (float) 0.8;//(n.getArgument() / (Math.PI * 2));
+		float h = (float) (n.getArgument() / (Math.PI * 2));
 		float s = (float) Math.abs(Math.cos(n.abs()));
 		float v = (float) Math.abs(Math.sin(n.abs()));
 

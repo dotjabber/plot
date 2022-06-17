@@ -13,6 +13,7 @@ import java.awt.event.MouseWheelListener;
 import java.awt.image.BufferedImage;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 import javax.swing.JPanel;
 
@@ -26,7 +27,7 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 	private static final int PLOT_STRING_MARGIN = 15;
 	
 	private static final double SCALE_FACTOR_STEP = 0.2;
-	private static final double SCALE_FACTOR_DEFAULT = 0.0027968216246636525;
+	private static final double SCALE_FACTOR_DEFAULT = 0.0017968216246636525;
 
 	private static final int CENTER_DOT_SIZE = 6;
 	
@@ -103,10 +104,7 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		bufferedPlot = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		
 		// plot given function
-		for(PlotFunction plotFunction : plotFunctions) {
-			plotFunction.doPlot(bufferedPlot, zeroPoint, scale);
-		}
-
+		Arrays.stream(plotFunctions).forEach(f -> f.doPlot(bufferedPlot, zeroPoint, scale));
 		repaint();
 	}
 
@@ -207,6 +205,14 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		// debug mode
 		else if(evt.getKeyCode() == KeyEvent.VK_D && evt.getModifiersEx() == KeyEvent.CTRL_DOWN_MASK) {
 			infoPresent = !infoPresent;
+		}
+
+		else if(evt.getKeyCode() == KeyEvent.VK_UP) {
+			Arrays.stream(plotFunctions).forEach(PlotFunction::next);
+		}
+
+		else if(evt.getKeyCode() == KeyEvent.VK_DOWN) {
+			Arrays.stream(plotFunctions).forEach(PlotFunction::previous);
 		}
 		
 		componentResized(null);
