@@ -18,7 +18,7 @@ public abstract class PlotFractalFunction extends PlotFunction {
 			p = getValue(RAND.nextDouble(), p);
 
 			int i = (int)(p.x / scale) + zeroPoint.x;
-			int j = (int)(p.y / scale) + zeroPoint.y;
+			int j = (int)(-p.y / scale) + zeroPoint.y;
 			
 			if(i >= 0 && j >= 0 && i < image.getWidth() && j < image.getHeight()) {
 				image.setRGB(i, j, getColor());

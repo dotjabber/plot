@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
 import priv.dotjabber.plot.function.PlotFunction;
+import priv.dotjabber.plot.point.DPoint;
 import priv.dotjabber.plot.point.IPoint;
 
 public class SequencePanel extends JPanel {
@@ -25,6 +26,8 @@ public class SequencePanel extends JPanel {
 	private double currentParam;
 
 	private final IPoint zeroPoint;
+	private final DPoint centerPoint;
+
 	private int height;
 	private int width;
 	
@@ -32,6 +35,8 @@ public class SequencePanel extends JPanel {
 			final double step) {
 		
 		zeroPoint = new IPoint();
+		centerPoint = new DPoint();
+
 		currentParam = start;
 		try {
 			plotFunction = plotClass.getDeclaredConstructor().newInstance();

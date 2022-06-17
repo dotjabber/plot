@@ -5,7 +5,7 @@ import org.apache.commons.math3.complex.Complex;
 import priv.dotjabber.plot.function.PlotComplexFunction;
 
 public class MandelbrotSet extends PlotComplexFunction {
-	private static final int ITERATIONS = 20;
+	private static final int ITERATIONS = 10;
 
 	@Override
 	public Complex getValue(Complex n) {

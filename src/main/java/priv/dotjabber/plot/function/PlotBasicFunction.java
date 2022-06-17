@@ -23,7 +23,7 @@ public abstract class PlotBasicFunction extends PlotFunction {
 			double y1 = -getValue(x1);
 			
 			int j = (int)(y1 / scale) + zeroPoint.y;
-			
+
 			if(pi > Integer.MIN_VALUE) {
 				g.drawLine(pi, pj, i, j);
 			}

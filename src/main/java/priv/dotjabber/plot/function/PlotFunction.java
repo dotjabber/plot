@@ -15,5 +15,5 @@ public abstract class PlotFunction {
 		return parameters;
 	}
 	
-	public abstract void doPlot(BufferedImage image, IPoint point, double scale);
+	public abstract void doPlot(BufferedImage image, IPoint zeroPoint, double scale);
 }

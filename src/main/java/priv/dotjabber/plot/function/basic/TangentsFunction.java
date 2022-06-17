@@ -4,15 +4,15 @@ import java.awt.Color;
 
 import priv.dotjabber.plot.function.PlotBasicFunction;
 
-public class LinearFunction extends PlotBasicFunction {
+public class TangentsFunction extends PlotBasicFunction {
 
 	@Override
 	public double getValue(double x) {
-		return x;
+		return Math.tan(x);
 	}
 
 	@Override
 	public int getColor() {
-		return Color.CYAN.getRGB();
+		return Color.ORANGE.getRGB();
 	}
 }
