@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import priv.dotjabber.plot.generator.Generator;
-import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.DPoint;
 import priv.dotjabber.plot.point.IPoint;
 

@@ -18,4 +18,13 @@ public class ConstGenerator extends Generator {
     public Number get() {
         return c;
     }
+
+    @Override
+    public void reset() {
+    }
+
+    @Override
+    public boolean hasMore() {
+        return true;
+    }
 }

@@ -11,8 +11,9 @@ public abstract class PlotFunction {
 		this.generator = generator;
 	}
 
-	public void next() {
+	public boolean next() {
 		generator.next();
+		return generator.hasMore();
 	}
 
 	public void previous() {

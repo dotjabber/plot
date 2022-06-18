@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import org.apache.commons.math3.complex.Complex;
 
 import priv.dotjabber.plot.generator.Generator;
-import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.IPoint;
 
 public abstract class PlotComplexFunction extends PlotFunction {

@@ -18,7 +18,7 @@ public class Plot extends JFrame {
 		JFrame main = new Plot();
 
 		main.getContentPane().add(
-				new PlotPanel(new MandelbrotSet(new IntSeqGenerator(0, 1)))
+				new PlotPanel(new MandelbrotSet(new IntSeqGenerator(0, 1, 80)))
 		);
 		
 		main.setVisible(true);

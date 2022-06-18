@@ -1,26 +1,40 @@
 package priv.dotjabber.plot.generator;
 
 public class IntSeqGenerator extends Generator {
-    private Integer start;
-    private final Integer step;
+    private final int start;
+    private final int step;
+    private final int end;
+    private int current;
 
-    public IntSeqGenerator(Integer start, Integer step) {
+    public IntSeqGenerator(int start, int step, int end) {
         this.start = start;
         this.step = step;
+        this.end = end;
+        this.current = start;
     }
 
     @Override
     public void next() {
-        start += step;
+        if(current < end) current += step;
     }
 
     @Override
     public void previous() {
-        start -= step;
+        if(current > start) current -= step;
     }
 
     @Override
     public Integer get() {
-        return start;
+        return current;
+    }
+
+    @Override
+    public void reset() {
+        current = start;
+    }
+
+    @Override
+    public boolean hasMore() {
+        return current != end;
     }
 }

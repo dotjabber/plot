@@ -15,9 +15,11 @@ import java.awt.image.BufferedImage;
 import java.text.MessageFormat;
 import java.util.Arrays;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import lombok.extern.log4j.Log4j2;
+
+import priv.dotjabber.plot.function.ImageWorker;
 import priv.dotjabber.plot.function.PlotFunction;
 import priv.dotjabber.plot.point.DPoint;
 import priv.dotjabber.plot.point.IPoint;
@@ -32,14 +34,16 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 	private static final int CENTER_DOT_SIZE = 6;
 	
 	private BufferedImage bufferedPlot;
-	private final PlotFunction[] plotFunctions;
+	private final PlotFunction[] functions;
 	
 	private final DPoint centerPoint;
 	private final IPoint zeroPoint;
 	
 	private final DPoint mousePoint;
 	private final IPoint mousePressPoint;
-	
+
+	private ImageWorker imageWorker;
+
 	private int height;
 	private int width;
 	
@@ -47,9 +51,7 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 	private boolean infoPresent;
 	
 	public PlotPanel(PlotFunction... functions) {
-		log.debug("PlotPanel()");
-
-		plotFunctions = functions;
+		this.functions = functions;
 
 		mousePressPoint = new IPoint();
 		mousePoint = new DPoint();
@@ -104,7 +106,7 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		bufferedPlot = new BufferedImage(width, height, BufferedImage.TYPE_3BYTE_BGR);
 		
 		// plot given function
-		Arrays.stream(plotFunctions).forEach(f -> f.doPlot(bufferedPlot, zeroPoint, scale));
+		Arrays.stream(functions).forEach(f -> f.doPlot(bufferedPlot, zeroPoint, scale));
 		repaint();
 	}
 
@@ -201,20 +203,34 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 			centerPoint.x = 0;
 			centerPoint.y = 0;
 		}
-		
+
 		// debug mode
 		else if(evt.getKeyCode() == KeyEvent.VK_D && evt.getModifiersEx() == KeyEvent.CTRL_DOWN_MASK) {
 			infoPresent = !infoPresent;
 		}
 
 		else if(evt.getKeyCode() == KeyEvent.VK_UP) {
-			Arrays.stream(plotFunctions).forEach(PlotFunction::next);
+			Arrays.stream(functions).forEach(PlotFunction::next);
 		}
 
 		else if(evt.getKeyCode() == KeyEvent.VK_DOWN) {
-			Arrays.stream(plotFunctions).forEach(PlotFunction::previous);
+			Arrays.stream(functions).forEach(PlotFunction::previous);
 		}
-		
+
+		else if(evt.getKeyCode() == KeyEvent.VK_S && evt.getModifiersEx() == KeyEvent.CTRL_DOWN_MASK) {
+			if(imageWorker == null) {
+				imageWorker = new ImageWorker(functions, width, height, zeroPoint, scale);
+				imageWorker.start();
+			}
+		}
+
+		else if(evt.getKeyCode() == KeyEvent.VK_E && evt.getModifiersEx() == KeyEvent.CTRL_DOWN_MASK) {
+			if(imageWorker != null) {
+				imageWorker.interrupt();
+				imageWorker = null;
+			}
+		}
+
 		componentResized(null);
 		repaint();
 	}
@@ -234,8 +250,6 @@ public class PlotPanel extends JPanel implements ComponentListener, MouseListene
 		log.debug("paint(g)");
 
 		Graphics2D g2d = (Graphics2D) g;
-
-		super.paint(g2d);
 
 		//Set  anti-alias!
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

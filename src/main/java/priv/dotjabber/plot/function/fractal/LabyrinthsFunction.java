@@ -6,9 +6,9 @@ import priv.dotjabber.plot.function.PlotFractalFunction;
 import priv.dotjabber.plot.generator.ConstGenerator;
 import priv.dotjabber.plot.point.DPoint;
 
-public class LabirynthFunction extends PlotFractalFunction {
+public class LabyrinthsFunction extends PlotFractalFunction {
 
-	public LabirynthFunction() {
+	public LabyrinthsFunction() {
 		super(new ConstGenerator(0));
 	}
 
